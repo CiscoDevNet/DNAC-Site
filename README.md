@@ -2,7 +2,9 @@
 
 a simple tool to get/add/delete Cisco DNA Center sites
 
-## get sites
+## Get sites
+The site list is dumped.  I use "|" as a field sepperator as addresses contain ","
+
 ```buildoutcfg
 $ ./site.py 
 https://sandboxdnac2.cisco.com:8080/api/v1/group/count?groupType=SITE

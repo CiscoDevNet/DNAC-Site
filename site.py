@@ -67,7 +67,8 @@ class SiteCache:
         for site in self._cache.values():
             if site['groupNameHierarchy'] != 'Global' and site_id_path in site['groupHierarchy'] :
                 result.append({site['groupHierarchy']: site['groupNameHierarchy']})
-        return sorted(result,reverse=True)
+        print(json.dumps(result, indent=2))
+        return sorted(result,reverse=True, key=lambda x: list(x.keys())[0])
 
     def add_cache(self, name, sitetype):
         self._new_cache_site(name, sitetype)
@@ -187,8 +188,8 @@ def del_locations(location_file, site_cache, commit):
             try:
                 children = site_cache.find_children(site['name'])
                 for child in children:
-                    site_name = child.values()[0]
-                    site_id = child.keys()[0].split("/")[-1]
+                    site_name = list(child.values())[0]
+                    site_id = list(child.keys())[0].split("/")[-1]
                     print("Deleting {}:({})".format(site_name, site_id))
                     if commit:
                         response = site_cache.del_dnac(site_id)
