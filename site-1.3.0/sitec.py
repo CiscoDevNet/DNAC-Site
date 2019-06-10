@@ -29,13 +29,14 @@ class SiteCache:
         count = response['response']
         print ("COUNT:{}".format(count))
 
-        for start in range(1, count+1, LIMIT):
-
+        for start in range(1, count, LIMIT):
+            print(start,LIMIT)
             response = get_url("dna/intent/api/v1/site?offset={}&limit={}".format(start, LIMIT))
 
             sites = response['response']
             for s in sites:
                 logging.debug("Caching {}".format(s['groupNameHierarchy']))
+                print("Caching {}".format(s['groupNameHierarchy']))
                 self._cache[s['groupNameHierarchy']] =  s
 
         self._new_cache_site("Global","area")
