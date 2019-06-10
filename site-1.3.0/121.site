@@ -1,0 +1,6 @@
+name|type|address|floorDim|rfModel
+Global/Sydney/SYD5|building|177 Pacific Highway, North Sydney New South Wales 2060, Australia|fc9393df-244b-403c-8d6e-98c70d409e0b
+Global/Perth|area|None|6d50d45a-2b95-4ec0-b936-9652e053b886
+Global/Perth/PER1|building|233 St Georges Terrace, Perth Western Australia 6000, Australia|b0fb6d85-b3b7-4eca-abe8-e1bb1c89f55f
+Global/Perth/PER1/PER1-F5|floor||300x100x200|Cubes And Walled Offices
+Global/Sydney|area|None|7ef5cc3a-a686-486f-98bc-0b3e3b616d2f
