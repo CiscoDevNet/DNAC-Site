@@ -2,6 +2,8 @@
 
 a simple tool to get/add/delete Cisco DNA Center sites
 
+## UPDATED TO 1.3 CODE.. see [site-1.3.0](site-1.3.0) for details
+
 ## Get sites
 The site list is dumped.  I use "|" as a field sepperator as addresses contain ","
 
