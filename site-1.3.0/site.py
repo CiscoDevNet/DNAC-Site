@@ -127,6 +127,23 @@ class SiteCache:
         else:
             message = response['message']
         return message
+    def get_floor_dim(self,attribs):
+        for attr in attribs:
+            if attr['nameSpace'] == 'mapGeometry':
+                return('{}x{}x{}'.format(round(float(attr['attributes']['length'])),
+                                               round(float(attr['attributes']['width'])),
+                                               round(float(attr['attributes']['height']))))
+
+        return ""
+    def get_floor_rfModel(self,attribs):
+        for attr in attribs:
+
+            if attr['nameSpace'] == 'mapsSummary':
+                #print(attr)
+                return '{}'.format(attr['attributes']['rfModel'])
+
+
+        return ""
 
     def parse_sites(self):
 
@@ -134,15 +151,10 @@ class SiteCache:
         for site in self._cache.values():
 
             if 'id' in  site:
-                if 'floorDim' in site:
-                    floordim = site['floorDim']
-                else:
-                    floordim = ""
-                if 'rfModel' in site:
-                    rfmodel = site['floorDim']
-                else:
-                    rfmodel = ""
-                print('{}|{}|{}|{}'.format(site['groupNameHierarchy'],
+                floordim = self.get_floor_dim(site['additionalInfo'])
+
+                rfmodel = self.get_floor_rfModel(site['additionalInfo'])
+                print('{}|{}|{}|{}|{}'.format(site['groupNameHierarchy'],
                                        get_site_type(site),
                                        get_site_address(site),
                                        floordim,
